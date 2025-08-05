@@ -1,0 +1,562 @@
+:root {
+    --primary-color: #00bcd4; /* Un azul cian para énfasis, similar al de "idea" logo */
+    --secondary-color: #0d47a1; /* Un azul más oscuro para acentos o texto principal */
+    --header-bg-color: #1a1a2e; /* Fondo oscuro para el header (azul muy oscuro) */
+    --header-text-color: #ffffff; /* Texto blanco para el header */
+    --text-color: #333; /* Texto oscuro general para el resto de la página */
+    --light-gray: #f4f4f4; /* Fondo claro para secciones y elementos */
+    --white: #ffffff;
+    --dark-gray: #555; /* Texto para párrafos o info secundaria */
+    --border-color: rgba(255, 255, 255, 0.1); /* Borde sutil y claro para el header */
+}
+
+/* 1. Restablecimiento Básico y Estilos Generales del Body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white);
+    /* IMPORTANTE: Padding superior para compensar el header fijo */
+    padding-top: 70px; /* Ajustado para un header más compacto */
+    scroll-behavior: smooth;
+}
+
+/* Contenedor general para centrar y limitar el ancho del contenido de las secciones */
+.main-container { /* Renombrado de '.container' para evitar conflictos con el header */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Estilos de Títulos */
+h1, h2, h3, h4 {
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+    line-height: 1.2; /* Ajustado para una mejor legibilidad */
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.75em; }
+h4 { font-size: 1.3em; }
+
+p {
+    margin-bottom: 10px;
+}
+
+/* Estilos de Enlaces */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+}
+
+a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Estilos de Botones */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease; /* Añadido color a la transición */
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color); /* Fondo blanco al hacer hover */
+    color: var(--white); /* Texto cambia a secondary-color */
+    text-decoration: none; /* Asegurarse de que no haya subrayado */
+    transform: translateY(-2px);
+    border: 1px solid var(--header-bg-color); /* Un borde sutil para que destaque */
+}
+
+.btn-sent { /* Estilo específico para el botón de enviar del formulario */
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.btn-sent:hover {
+    background-color: var(--header-bg-color); /* Fondo oscuro del header al hacer hover */
+    color: var(--primary-color); /* Texto cambia a primary-color */
+    text-decoration: none;
+    transform: translateY(-2px);
+    border: 1px solid var(--primary-color); /* Un borde sutil para que destaque */
+}
+
+
+/* 2. Estilo del Encabezado (Header) - Banner Fijo con Nuevo Diseño */
+header {
+    background-color: var(--header-bg-color); /* Fondo oscuro */
+    padding: 15px 0; /* Padding vertical ajustado para compactar el header */
+    border-bottom: 1px solid var(--border-color); /* Borde inferior sutil */
+    border-top: 4px solid var(--primary-color); /* Línea superior como en la imagen */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    max-height: 120px; /* Altura máxima del banner */
+    overflow: hidden;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: flex; /* Flexbox para centrar el contenido del header */
+    align-items: center;
+    justify-content: center; /* Centra el 'header-main-content' horizontalmente */
+
+}
+
+/* Contenedor principal dentro del header (equivalente al 'container' anterior del header) */
+.header-main-content {
+    display: flex;
+    justify-content: space-between; /* Espacia el logo a la izquierda y el menú a la derecha */
+    align-items: center;
+    width: 100%;
+    max-width: 1800px; /* Nuevo ancho máximo para el contenido del header */
+    margin: 0 auto; /* Centra el contenido si la ventana es más ancha que 1800px */
+    padding: 0 20px; /* Padding lateral dentro del contenedor */
+}
+
+/* Tus contenedores específicos para logo y menú */
+.logo_blog {
+    /* Puedes añadir estilos específicos para el contenedor del logo aquí */
+    display: flex; /* Asegura que el h1/img se comporte como un flex item */
+    align-items: center;
+}
+
+/* Estilo para el logo (imagen) dentro del header fijo */
+.logo {
+    height: 70px; /* Altura del logo ajustada para el banner más compacto */
+    width: auto;
+    display: block; /* Para eliminar cualquier espacio extra debajo de la imagen */
+    max-height: 60px; /* Límite para el logo, ajustado para no desbordar el header */
+    /* Si tu logo original "idea 2025 LOGO-1.png" tiene colores que no contrastan
+        con el fondo oscuro, considera usar una versión en blanco del logo
+        o aplicar un filtro CSS si es simple. */
+}
+
+/* Menú de escritorio */
+.menu-desktop nav ul {
+    list-style: none;
+    display: flex;
+    
+}
+
+.menu-desktop nav ul li {
+    margin-left: 30px; /* Espacio entre los ítems del menú */
+}
+
+.menu-desktop nav ul li a {
+    color: var(--header-text-color);
+    font-weight: bold;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Efecto de subrayado minimalista para el menú */
+.menu-desktop nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.menu-desktop nav ul li a:hover::after {
+    width: 100%;
+}
+
+.menu-desktop nav ul li a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* 3. Estilo de las Secciones Generales */
+section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Pie de Página (Footer) */
+footer {
+    background-color: var(--header-bg-color);
+    color: var(--white);
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color);
+}
+
+footer .social-links a {
+    color: var(--primary-color);
+    margin: 0 12px;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+footer .social-links a:hover {
+    color: var(--white);
+}
+
+/* Botón WhatsApp - Esquina inferior derecha (estilo original del proyecto) */
+.btn-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 65px;
+    height: 65px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 2px solid #FFF;
+    overflow: hidden;
+}
+
+.btn-whatsapp::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s;
+}
+
+.btn-whatsapp:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.btn-whatsapp:hover::before {
+    transform: scale(1);
+}
+
+.btn-whatsapp img {
+    width: 38px;
+    height: 38px;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s;
+    z-index: 2;
+}
+
+.btn-whatsapp:hover img {
+    transform: scale(1.1);
+}
+
+.tooltip-whatsapp {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%; /* Arriba del botón */
+    left: 50%;
+    margin-left: -60px; /* Centra el tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.8em;
+}
+
+.btn-whatsapp:hover .tooltip-whatsapp {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ========================================= */
+/* ESTILOS ESPECÍFICOS PARA NAVEGACIÓN MÓVIL */
+/* ========================================= */
+
+/* Estilos para el menú hamburguesa (visible en móviles) */
+.hamburger-menu {
+    position: absolute; /* Posicionado absolutamente dentro del header-main-content */
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: none; /* Oculto por defecto en escritorio */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001; /* Asegura que esté por encima del menú desplegado */
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.hamburger-menu.open .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.open .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.bar {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--header-text-color);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Estilos para el menú móvil (inicialmente oculto) */
+.menu-mobile {
+    display: none; /* Oculto por defecto en escritorio */
+    width: 100%;
+    background-color: var(--header-bg-color);
+    opacity: 90%;
+    text-align: center;
+    padding-top: 70px; /* Espacio para no quedar debajo del header fijo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    overflow-y: auto; /* Para menús largos */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    transform: translateX(100%); /* Inicialmente fuera de la pantalla a la derecha */
+    transition: transform 0.3s ease-out;
+}
+
+.menu-mobile.open {
+    display: block; /* Muestra el contenedor cuando está abierto */
+    transform: translateX(0); /* Desliza hacia la vista */
+}
+
+.menu-mobile nav ul {
+    flex-direction: column;
+    padding: 20px 0;
+    list-style: none;
+}
+
+.menu-mobile nav ul li {
+    margin: 15px 0;
+}
+
+.menu-mobile nav ul li a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: var(--header-text-color); /* Color del texto para el menú móvil */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-mobile nav ul li a::after {
+    display: none; /* Sin subrayado en el menú móvil (opcional) */
+}
+
+.menu-mobile nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--primary-color);
+}
+
+
+/* Media Queries para Responsive Design (Adaptabilidad a diferentes tamaños de pantalla) */
+@media (max-width: 992px) {
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+    h3 { font-size: 1.5em; }
+
+    #hero h2 { font-size: 2.8em; }
+    #hero p { font-size: 1.1em; }
+
+    .menu-desktop nav ul li {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px; /* Ajustado para que coincida con la altura del header en móvil */
+    }
+
+    header {
+        max-height: 70px; /* Altura máxima del header en pantallas pequeñas */
+        padding: 10px 0; /* Padding ajustado */
+        justify-content: flex-start; /* Alinea los ítems a la izquierda */
+    }
+
+    .logo {
+        height: 30px;
+        max-height: 40px; /* Ajustado para pantallas pequeñas */
+    }
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.6em; }
+    section { padding: 50px 0; }
+
+    #hero h2 { font-size: 2.2em; }
+    #hero p { font-size: 1em; }
+
+    .header-main-content { /* Asegura que el contenedor del header se adapte */
+        flex-direction: row; /* Vuelve a fila para logo y hamburguesa */
+        justify-content: space-between; /* Espacio entre logo y hamburguesa */
+        text-align: left; /* Restablece la alineación del texto */
+        max-width: 100%;
+    }
+    .menu-desktop { /* Oculta el menú de escritorio */
+        display: none;
+    }
+    .hamburger-menu { /* Muestra el menú hamburguesa */
+        display: flex;
+    }
+
+    .service-grid, .portfolio-grid, .blog-posts {
+        grid-template-columns: 1fr;
+    }
+
+    .service-item, .portfolio-item, .blog-post-item {
+        margin: 0 auto;
+        max-width: 450px;
+    }
+
+    #contacto form button {
+        align-self: center;
+    }
+
+    /* Ajuste para pantallas pequeñas (botón WhatsApp) */
+    .btn-whatsapp {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding: 0 15px;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    #hero h2 { font-size: 1.8em; }
+    #hero p { font-size: 0.95em; }
+    .logo {
+        height: 30px;
+        max-height: 40px; /* Asegurarse de que el max-height se mantenga coherente */
+    }
+    .hamburger-menu { /* Ajuste de posición para hamburguesa en móviles más pequeños */
+        right: 15px;
+    }
+}
+
+
+/* /// ESTILOS PARA LA PAGINA DE GRACIAS POR CONTACTARNOS/// ///*
+
+
+/* Sección thanks  (Principal) */
+#thanks {
+    background-color: #0a0a20; 
+    color: var(--white);
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 70px);
+}
+
+/* Estilos para el logo dentro del título thanks */
+.thanks-logo {
+    height: 2em; /* Ajusta la altura según sea necesario (relativo al tamaño de la fuente del h2) */
+    vertical-align: middle; /* Alinea verticalmente el logo con el texto */
+    margin: 0 0.2em; /* Añade un pequeño margen a los lados para separarlo del texto */
+}
+
+#thanks  h2 {
+    font-size: 3.2em;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#thanks p {
+    font-size: 1.3em;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    color: rgba(255, 255, 255, 0.9);
+}

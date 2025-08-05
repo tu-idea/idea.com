@@ -1,0 +1,187 @@
+/* /// ESTILOS PARA LA PÁGINA DE BLOG DE ANUNCIOS /// */
+
+/* Sección de la Página del Blog */
+.blog-feed-section {
+    background-color: var(--light-gray); /* Un fondo suave para el feed */
+    padding: 80px 0;
+    text-align: center;
+}
+
+.blog-feed-section h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.blog-feed-section .section-description {
+    font-size: 1.1em;
+    color: var(--dark-gray);
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Contenedor de la Cuadrícula del Feed */
+.feed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas flexibles */
+    gap: 30px; /* Espacio entre las tarjetas de anuncios */
+    max-width: 900px; /* Ancho máximo para el feed centralizado */
+    margin: 0 auto; /* Centrar la cuadrícula */
+}
+
+/* Estilos para cada Publicación (Anuncio) */
+.feed-post {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left; /* Alinea el texto dentro del post a la izquierda */
+    display: flex;
+    flex-direction: column; /* Organiza el contenido verticalmente */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feed-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.feed-post .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.feed-post .business-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Hacer el logo circular */
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid var(--primary-color); /* Pequeño borde para destacar */
+}
+
+.feed-post .business-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.feed-post .business-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.feed-post .post-time {
+    font-size: 0.85em;
+    color: var(--dark-gray);
+}
+
+.feed-post .post-content p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+.feed-post .post-image {
+    width: 100%;
+    max-height: 300px; /* Altura máxima para las imágenes del post */
+    object-fit: cover; /* Recorta la imagen para que cubra el espacio */
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.feed-post .post-actions {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
+    gap: 10px; /* Espacio entre los botones */
+    margin-top: auto; /* Empuja las acciones al final de la tarjeta */
+    padding-top: 15px;
+    border-top: 1px solid var(--light-gray);
+}
+
+.feed-post .action-btn,
+.feed-post .action-link {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 0.9em;
+    text-decoration: none; /* Para los enlaces */
+    text-align: center;
+    flex-grow: 1; /* Permite que los botones crezcan y se llenen el espacio */
+}
+
+.feed-post .action-btn:hover,
+.feed-post .action-link:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Media Queries para la página de Blog */
+@media (max-width: 768px) {
+    .blog-feed-section h2 {
+        font-size: 2.2em;
+    }
+    .blog-feed-section .section-description {
+        font-size: 1em;
+    }
+    .feed-grid {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+        max-width: 500px; /* Ajusta el ancho para móvil */
+    }
+    .feed-post {
+        padding: 15px;
+    }
+    .feed-post .post-header {
+        margin-bottom: 10px;
+    }
+    .feed-post .business-logo {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+    .feed-post .business-name {
+        font-size: 1.1em;
+    }
+    .feed-post .post-time {
+        font-size: 0.8em;
+    }
+    .feed-post .post-content p {
+        font-size: 0.9em;
+        margin-bottom: 10px;
+    }
+    .feed-post .post-image {
+        max-height: 250px;
+        margin-bottom: 10px;
+    }
+    .feed-post .post-actions {
+        flex-direction: column; /* Apila los botones en móvil */
+        gap: 8px;
+        padding-top: 10px;
+    }
+    .feed-post .action-btn,
+    .feed-post .action-link {
+        padding: 10px;
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-feed-section {
+        padding: 60px 0;
+    }
+    .blog-feed-section h2 {
+        font-size: 2em;
+    }
+    .blog-feed-section .section-description {
+        margin-bottom: 30px;
+    }
+}
